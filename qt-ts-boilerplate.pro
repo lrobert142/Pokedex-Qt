@@ -10,6 +10,4 @@ include ("defaults.pri")
 
 DISTFILES += \
     uncrustify.cfg \
-    .astylerc \
-    team.md \
-    readme.md
+    .astylerc
