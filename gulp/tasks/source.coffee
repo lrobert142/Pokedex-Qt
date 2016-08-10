@@ -26,7 +26,7 @@ gulp.task 'source:wrap', false, ()->
 
 #Wraps the transpiled javascript with a Qt specific header and footer
 gulp.task 'source:qt:wrap', false, (cb)->
-  return gulp.src(['src/qt_header.js','build/lib.qt.js', 'src/qt_footer.js'])
+  return gulp.src(['src/qt_header.js','app/lib.qt.js', 'src/qt_footer.js'])
     .pipe(concat('lib.qt.js'))
     .pipe(gulp.dest('app'));
 
