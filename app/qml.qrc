@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>lib.qt.js</file>
+        <file>lodash.js</file>
+    </qresource>
+</RCC>
