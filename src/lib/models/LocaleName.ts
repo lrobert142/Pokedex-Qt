@@ -1,5 +1,14 @@
 namespace Model {
 
+    /**
+     * Class representing a localed name with a language code
+     * 
+     * @export
+     * @class LocaleName
+     * @implements {Interface.ILocaleName}
+     * @implements {Interface.IJSONable}
+     * @implements {Interface.IComparable}
+    */
     export class LocaleName implements Interface.ILocaleName, Interface.IJSONable, Interface.IComparable {
 
         /**
