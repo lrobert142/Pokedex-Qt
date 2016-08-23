@@ -11,7 +11,7 @@ describe("Pokemon", () => {
     describe("Constructor", () => {
         it("Should throw an error if any data is missing", () => {
             expect(() => {
-            let pokemon = new Pokemon({});
+                let pokemon = new Pokemon({});
             }).to.throw(ModelValidationException, "nationalDexNumber,names,sprites,height,weight,stats,eggGroups field(s) missing.");
         });
 
@@ -31,21 +31,57 @@ describe("Pokemon", () => {
 
         it("Should create a new instance of Pokemon", () => {
             let pokemon = new Pokemon({
-                    nationalDexNumber: "001",
-                    names: [],
-                    sprites: [],
-                    height: 1,
-                    weight: 1,
-                    stats: [],
-                    eggGroups: []
+                nationalDexNumber: "001",
+                names: [{ name: "UnitTest", languageCode: "en" }],
+                sprites: [],
+                height: 1,
+                weight: 1,
+                stats: [],
+                eggGroups: []
             });
+
             expect(pokemon.nationalDexNumber()).to.equal("001");
-            expect(pokemon.names()).to.deep.equal([]);
+            expect(pokemon.names()[0].toJSON()).to.deep.equal({ name: "UnitTest", languageCode: "en" });
             expect(pokemon.sprites()).to.deep.equal([]);
             expect(pokemon.height()).to.equal(1);
             expect(pokemon.weight()).to.equal(1);
             expect(pokemon.stats()).to.deep.equal([]);
             expect(pokemon.eggGroups()).to.deep.equal([]);
-        })
+        });
     });
+
+    describe("#nationalDexNumber", () => {
+        it("Should return the given national pokedex number", () => {
+            let pokemon = new Pokemon({
+                nationalDexNumber: "001",
+                names: [{ name: "UnitTest", languageCode: "en" }],
+                sprites: [],
+                height: 1,
+                weight: 1,
+                stats: [],
+                eggGroups: []
+            });
+
+            expect(pokemon.nationalDexNumber()).to.equal("001");
+        });
+    });
+
+    describe("#names", () => {
+        it("Should return an all names", () => {
+            let pokemon = new Pokemon({
+                nationalDexNumber: "001",
+                names: [{ name: "UnitTest", languageCode: "en" }],
+                sprites: [],
+                height: 1,
+                weight: 1,
+                stats: [],
+                eggGroups: []
+            });
+            let names = pokemon.names();
+
+            expect(names.length).to.equal(1);
+            expect(names[0].toJSON()).to.deep.equal({ name: "UnitTest", languageCode: "en" })
+        });
+    });
+
 });

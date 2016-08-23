@@ -6,10 +6,8 @@ namespace Model {
      * @export
      * @class Pokemon
      * @implements {Interface.IPokemon}
-     * @implements {Interface.IJSONable}
-     * @implements {Interface.IComparable}
     */
-    export class Pokemon implements Interface.IPokemon, Interface.IJSONable, Interface.IComparable {
+    export class Pokemon implements Interface.IPokemon {
         /**
          * Nation pokedex number
          * 
@@ -96,8 +94,14 @@ namespace Model {
         */
         constructor(data: Object) {
             if (this._schema.validate(data)) {
+                let names = [];
+
+                data.names.forEach((nameData) => {
+                    names.push(new LocaleName(nameData));
+                });
+
                 this._nationalDexNumber = data.nationalDexNumber;
-                this._names = data.names;
+                this._names = names;
                 this._sprites = data.sprites;
                 this._height = data.height;
                 this._weight = data.weight;
