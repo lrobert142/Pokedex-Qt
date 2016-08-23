@@ -111,7 +111,7 @@ namespace Interface {
         }
 
         names(): Array<ILocaleName> {
-            return [new Model.LocaleName({ name: "Fake" }), new Model.LocaleName({ name: "Pokemon" })];
+            return [new Model.LocaleName({ name: "Fake", languageCode: "en" }), new Model.LocaleName({ name: "Pokemon", languageCode: "en" })];
         }
 
         name(languageCode: string = "en"): string {

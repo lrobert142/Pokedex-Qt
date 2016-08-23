@@ -32,19 +32,22 @@ describe("FakePokemon", () => {
     });
 
     describe("#names", () => {
-        it("Should return a static value", () => {
+        it("Should return a static array", () => {
             let fake = new FakePokemon();
-            expect(fake.names()).to.deep.equal([{ name: "Fake" }, { name: "Pokemon" }]);
+            let names = fake.names();
+            expect(names.length).to.equal(2);
+            expect(names[0].toJSON()).to.deep.equal({ name: "Fake", languageCode: "en" });
+            expect(names[1].toJSON()).to.deep.equal({ name: "Pokemon", languageCode: "en" });
         });
     });
 
-    describe("#sprites", ()=> {
+    describe("#sprites", () => {
         it("Should return a static value", () => {
             let fake = new FakePokemon;
             expect(fake.sprites()).to.deep.equal([
                 { type: "front", url: "http://www.FakePokemon.com/front" },
                 { type: "back", url: "http://www.FakePokemon.com/back" }
-                ]);
+            ]);
         });
     });
 
