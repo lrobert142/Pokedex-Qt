@@ -13,8 +13,24 @@ describe("FakeLocaleName", () => {
     });
 
     describe("#languageCode", () => {
-        let fake = new FakeLocaleName();
-        expect(fake.languageCode()).to.equal("en");
+        it("Should return a static code", () => {
+            let fake = new FakeLocaleName();
+            expect(fake.languageCode()).to.equal("en");
+        });
+    });
+
+    describe("#toJSON", () => {
+        it("Should return a serialised object", () => {
+            let fake = new FakeLocaleName();
+            expect(fake.toJSON()).to.deep.equal({ name: "Name", languageCode: "en" });
+        });
+    });
+
+    describe("#equals", () => {
+        it("Should return true", () => {
+            let fake = new FakeLocaleName();
+            expect(fake.equals(fake)).to.be.true;
+        })
     });
 
 });
