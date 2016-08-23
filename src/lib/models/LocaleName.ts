@@ -55,7 +55,7 @@ namespace Model {
         }
 
         /**
-         * Gets the language locale as a two character code
+         * Gets the language locale
          * 
          * @returns {string} The language locale code
         */
