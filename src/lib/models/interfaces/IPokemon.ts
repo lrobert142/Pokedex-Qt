@@ -101,6 +101,21 @@ namespace Interface {
          * @returns {Array<String>} All egg groups this pokemon belongs to
         */
         eggGroups(): Array<String>;
+
+        /**
+         * Seralizes to a plain JSON representation
+         * 
+         * @returns {Object} Seralized object
+        */
+        toJSON(): Object;
+
+        /**
+         * Checks whether this Pokemon instance is equal to another
+         * 
+         * @param {IPokemon} comparator The IPokemon instance to compare with
+         * @returns {boolean} True if object's propeties are identical, false otherwise
+        */
+        equals(comparator: IPokemon): boolean;
     }
 
     export class FakePokemon implements IPokemon {
@@ -164,6 +179,19 @@ namespace Interface {
 
         eggGroups(): Array<String> {
             return ["FakeEggGroup1", "FakeEggGroup2"];
+        }
+
+        toJSON(): Object {
+            return {
+                nationalDexNumber: "001", names: [{ name: "Fake", languageCode: "en" }, { name: "Pokemon", languageCode: "en" }],
+                sprites: [{ type: "front", url: "http://www.FakePokemon.com/front" }, { type: "back", url: "http://www.FakePokemon.com/back" }],
+                height: -1, weight: -1, stats: [{ name: "attack", value: -1 }, { name: "hp", value: -1 }],
+                eggGroups: ["FakeEggGroup1", "FakeEggGroup2"]
+            };
+        }
+
+        equals(comparator: IPokemon): boolean {
+            return true;
         }
     }
 

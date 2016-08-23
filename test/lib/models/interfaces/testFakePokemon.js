@@ -121,4 +121,23 @@ describe("FakePokemon", () => {
         });
     });
 
+    describe("#toJSON", () => {
+        it("Should return a serialised object", () => {
+            let fake = new FakePokemon();
+            expect(fake.toJSON()).to.deep.equal({
+                nationalDexNumber: "001", names: [{ name: "Fake", languageCode: "en" }, { name: "Pokemon", languageCode: "en" }],
+                sprites: [{ type: "front", url: "http://www.FakePokemon.com/front" }, { type: "back", url: "http://www.FakePokemon.com/back" }],
+                height: -1, weight: -1, stats: [{ name: "attack", value: -1 }, { name: "hp", value: -1 }],
+                eggGroups: ["FakeEggGroup1", "FakeEggGroup2"]
+            });
+        });
+    });
+
+    describe("#equals", () => {
+        it("Should return true", () => {
+            let fake = new FakePokemon();
+            expect(fake.equals(fake)).to.equal(true);
+        });
+    });
+
 });
