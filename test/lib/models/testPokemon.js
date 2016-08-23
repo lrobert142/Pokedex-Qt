@@ -7,6 +7,15 @@ const StatNotFoundException = require("../../../build/lib.js").Exception.StatNot
 
 
 describe("Pokemon", () => {
+    const validPokemonData = {
+        nationalDexNumber: "001",
+        names: [{ name: "UnitTest", languageCode: "en" }],
+        sprites: [],
+        height: 1,
+        weight: 1,
+        stats: [],
+        eggGroups: []
+    }
 
     describe("Constructor", () => {
         it("Should throw an error if any data is missing", () => {
@@ -30,15 +39,7 @@ describe("Pokemon", () => {
         });
 
         it("Should create a new instance of Pokemon", () => {
-            let pokemon = new Pokemon({
-                nationalDexNumber: "001",
-                names: [{ name: "UnitTest", languageCode: "en" }],
-                sprites: [],
-                height: 1,
-                weight: 1,
-                stats: [],
-                eggGroups: []
-            });
+            let pokemon = new Pokemon(validPokemonData);
 
             expect(pokemon.nationalDexNumber()).to.equal("001");
             expect(pokemon.names()[0].toJSON()).to.deep.equal({ name: "UnitTest", languageCode: "en" });
@@ -52,15 +53,7 @@ describe("Pokemon", () => {
 
     describe("#nationalDexNumber", () => {
         it("Should return the given national pokedex number", () => {
-            let pokemon = new Pokemon({
-                nationalDexNumber: "001",
-                names: [{ name: "UnitTest", languageCode: "en" }],
-                sprites: [],
-                height: 1,
-                weight: 1,
-                stats: [],
-                eggGroups: []
-            });
+            let pokemon = new Pokemon(validPokemonData);
 
             expect(pokemon.nationalDexNumber()).to.equal("001");
         });
@@ -68,19 +61,31 @@ describe("Pokemon", () => {
 
     describe("#names", () => {
         it("Should return an all names", () => {
-            let pokemon = new Pokemon({
-                nationalDexNumber: "001",
-                names: [{ name: "UnitTest", languageCode: "en" }],
-                sprites: [],
-                height: 1,
-                weight: 1,
-                stats: [],
-                eggGroups: []
-            });
+            let pokemon = new Pokemon(validPokemonData);
             let names = pokemon.names();
 
             expect(names.length).to.equal(1);
             expect(names[0].toJSON()).to.deep.equal({ name: "UnitTest", languageCode: "en" })
+        });
+    });
+
+    describe("#name", () => {
+        it("Should throw an exception if a name with the given language code cannot be found", () => {
+            let pokemon = new Pokemon(validPokemonData);
+
+            expect(() => {
+                pokemon.name("ja");
+            }).to.throw(NameNotFoundException, 'Name for language code "ja" not found.');
+        });
+
+        it("Should return the name with the 'en' languageCode if param is not specified", () => {
+            let pokemon = new Pokemon(validPokemonData);
+            expect(pokemon.name()).to.equal("UnitTest");
+        });
+
+        it("Should return the name with the given languageCode", () => {
+            let pokemon = new Pokemon(validPokemonData);
+            expect(pokemon.name("en")).to.equal("UnitTest");
         });
     });
 

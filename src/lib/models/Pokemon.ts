@@ -142,7 +142,7 @@ namespace Model {
                 }
             }
 
-            throw new Exception.NameNotFoundException(`Name for language code ${languageCode} not found.`);
+            throw new Exception.NameNotFoundException(`Name for language code "${languageCode}" not found.`);
         }
 
         /**
