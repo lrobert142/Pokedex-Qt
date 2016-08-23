@@ -9,7 +9,7 @@ namespace Model {
      * @implements {Interface.IJSONable}
      * @implements {Interface.IComparable}
     */
-    export class LocaleName implements Interface.ILocaleName, Interface.IJSONable, Interface.IComparable {
+    export class LocaleName implements Interface.ILocaleName {
 
         /**
          * Actual name value
