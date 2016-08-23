@@ -17,18 +17,18 @@ namespace Interface {
         /**
          * Gets all names of the pokemon in various languages
          * 
-         * @returns {Array<Object>} All names for the pokemon
+         * @returns {Array<ILocaleName>} All names for the pokemon
         */
-        names(): Array<Object>;
+        names(): Array<ILocaleName>;
 
         /**
          * Gets the name of the pokemon in the specified language
          * 
          * @param {string} [languageCode] Two letter code of the language of the pokemon's name
-         * @returns {string} The pokemon's name in the specified langauge
+         * @returns {ILocaleName} The pokemon's name in the specified langauge locale
          * @throws {NameNotFoundException} If a name cannot be found, or the language code doesn't exist
         */
-        name(languageCode?: string): string;
+        name(languageCode?: string): ILocaleName;
 
         /**
          * Gets all sprites for the pokemon
