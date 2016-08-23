@@ -20,8 +20,8 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    //Expose Git tag versioning
-    qmlRegisterSingletonType("Native",1,0,"AppInfo",appVersionSingletonProvider);
+    //Expose Git tag versioning (Qt 5.7+)
+    //qmlRegisterSingletonType("Native",1,0,"AppInfo",appVersionSingletonProvider);
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
