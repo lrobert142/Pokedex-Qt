@@ -25,10 +25,10 @@ namespace Interface {
          * Gets the name of the pokemon in the specified language
          * 
          * @param {string} [languageCode] Two letter code of the language of the pokemon's name
-         * @returns {ILocaleName} The pokemon's name in the specified langauge locale
+         * @returns {string} The pokemon's name in the specified langauge locale
          * @throws {NameNotFoundException} If a name cannot be found, or the language code doesn't exist
         */
-        name(languageCode?: string): ILocaleName;
+        name(languageCode?: string): string;
 
         /**
          * Gets all sprites for the pokemon
@@ -110,8 +110,8 @@ namespace Interface {
             return "-001";
         }
 
-        names(): Array<Object> {
-            return [{ name: "Fake" }, { name: "Pokemon" }];
+        names(): Array<ILocaleName> {
+            return [new Model.LocaleName({ name: "Fake" }), new Model.LocaleName({ name: "Pokemon" })];
         }
 
         name(languageCode: string = "en"): string {

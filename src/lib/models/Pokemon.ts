@@ -1,5 +1,14 @@
 namespace Model {
 
+    /**
+     * Class representing a Pokemon
+     * 
+     * @export
+     * @class Pokemon
+     * @implements {Interface.IPokemon}
+     * @implements {Interface.IJSONable}
+     * @implements {Interface.IComparable}
+    */
     export class Pokemon implements Interface.IPokemon, Interface.IJSONable, Interface.IComparable {
         /**
          * Nation pokedex number
@@ -13,9 +22,9 @@ namespace Model {
          * Array of names of the pokemon in different languages
          * 
          * @private
-         * @type {Array<Object>}
+         * @type {Array<Interface.ILocaleName>}
         */
-        private _names: Array<Object>;
+        private _names: Array<Interface.ILocaleName>;
 
         /**
          * Array of sprite URLs
@@ -78,12 +87,12 @@ namespace Model {
          * 
          * @param {Object} data Object containing all data relevant to the Pokemon
          * @param {number} data.nationalDexNumber Pokemon's national pokedex number
-         * @param {Array<Object>} data.names Names and locales of the pokemon in different languages
-         * @param {Array<Object>} data.sprites Various sprites of the pokemon
+         * @param {Array} data.names Names and locales of the pokemon in different languages
+         * @param {Array} data.sprites Various sprites of the pokemon
          * @param {number} data.height Raw height of the pokemon
          * @param {number} data.weight Raw weight of the pokemon
-         * @param {Array<Object>} data.height Stats of the pokemon, including ev worth
-         * @param {Array<Object>} data.eggGroups Egg groups the pokemon belongs to
+         * @param {Array} data.height Stats of the pokemon, including ev worth
+         * @param {Array} data.eggGroups Egg groups the pokemon belongs to
         */
         constructor(data: Object) {
             if (this._schema.validate(data)) {
@@ -109,9 +118,9 @@ namespace Model {
         /**
          * Gets all names of the pokemon in various languages
          * 
-         * @returns {Array<Object>} All names for the pokemon
+         * @returns {Array<Interface.ILocaleName>} All names for the pokemon
         */
-        names(): Array<Object> {
+        names(): Array<Interface.ILocaleName> {
             return this._names;
         }
 
@@ -119,13 +128,13 @@ namespace Model {
          * Gets the name of the pokemon in the specified language
          * 
          * @param {string} [languageCode="en"] Two letter code of the language of the pokemon's name
-         * @returns {string} The pokemon's name in the specified langauge
+         * @returns {string} The pokemon's name in the specified langauge locale
          * @throws {NameNotFoundException} If a name cannot be found, or the language code doesn't exist
         */
         name(languageCode: string = "en"): string {
             for (let i = 0; i < this._names.length; i++) {
-                if (_.get(this._names[i], 'language.name') === languageCode) {
-                    return this._names[i].name;
+                if (this._names[i].languageCode() === languageCode) {
+                    return this._names[i].name();
                 }
             }
 
