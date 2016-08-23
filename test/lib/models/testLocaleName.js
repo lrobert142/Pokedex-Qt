@@ -25,4 +25,18 @@ describe("LocaleName", () => {
         });
     });
 
+    describe("#name", () => {
+        it("Should return the name", () => {
+            let name = new LocaleName({ name: "Unit Test", languageCode: "en" });
+            expect(name.name()).to.equal("Unit Test");
+        });
+    });
+
+    describe("#languageCode", () => {
+        it("Should return the languageCode", () => {
+            let name = new LocaleName({ name: "Unit Test", languageCode: "en" });
+            expect(name.languageCode()).to.equal("en");
+        });
+    });
+
 });
