@@ -69,6 +69,14 @@ namespace Interface {
          * @returns {Object} Seralized object
         */
         toJSON(): Object;
+
+        /**
+         * Checks whether this instance is equal to another
+         * 
+         * @param {IPokemonSprites} comparator The instance to compare with
+         * @returns {boolean} True if object's propeties are identical, false otherwise
+        */
+        equals(comparator: IPokemonSprites): boolean;
     }
 
     export class FakePokemonSprites implements IPokemonSprites {
@@ -113,6 +121,10 @@ namespace Interface {
                 frontDefault: "http://www.fake.com/frontDefault", frontFemale: "http://www.fake.com/frontFemale",
                 frontShiny: "http://www.fake.com/frontShiny", frontShinyFemale: "http://www.fake.com/frontShinyFemale"
             };
+        }
+
+        equals(comparator: IPokemonSprites): boolean {
+            return true;
         }
     }
 }
