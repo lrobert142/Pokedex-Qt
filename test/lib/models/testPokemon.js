@@ -21,7 +21,7 @@ describe("Pokemon", () => {
             frontShinyFemale: "http://www.fake.com/frontShinyFemale"
         },
         height: 1,
-        weight: 1,
+        weight: 2,
         stats: [],
         eggGroups: []
     };
@@ -53,7 +53,7 @@ describe("Pokemon", () => {
             expect(pokemon.nationalDexNumber()).to.equal("001");
             expect(pokemon.names()[0].toJSON()).to.deep.equal({ name: "UnitTest", languageCode: "en" });
             expect(pokemon.height()).to.equal(1);
-            expect(pokemon.weight()).to.equal(1);
+            expect(pokemon.weight()).to.equal(2);
             expect(pokemon.stats()).to.deep.equal([]);
             expect(pokemon.eggGroups()).to.deep.equal([]);
 
@@ -130,9 +130,23 @@ describe("Pokemon", () => {
     });
 
     describe("#heightInMeters", () => {
-        it("SHould return the height in meters", () => {
+        it("Should return the height in meters", () => {
             let pokemon = new Pokemon(validPokemonData);
             expect(pokemon.heightInMeters()).to.equal(0.1);
+        });
+    });
+
+    describe("#weight", () => {
+        it("Should return the raw weight value", () => {
+            let pokemon = new Pokemon(validPokemonData);
+            expect(pokemon.weight()).to.equal(2);
+        });
+    });
+
+    describe("#weightInKg", () => {
+        it("Should return the weight in kilograms", () => {
+            let pokemon = new Pokemon(validPokemonData);
+            expect(pokemon.weightInKg()).to.equal(0.2);
         });
     });
 
