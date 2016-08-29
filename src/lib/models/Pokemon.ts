@@ -212,13 +212,14 @@ namespace Model {
          * @throws {StatNotFoundException} If a stat cannot be found with that name
         */
         stat(statName: string): Interface.IStat {
-            this._stats.forEach((stat: Interface.IStat) => {
+            for (let i = 0; i < this._stats.length; i++) {
+                let stat = this._stats[i];
                 if (stat.name() === statName) {
                     return stat;
                 }
-            });
+            }
 
-            throw new Exception.StatNotFoundException(`Stat with name ${statName} not found.`);
+            throw new Exception.StatNotFoundException(`Stat with name "${statName}" not found.`);
         }
 
         /**
@@ -228,13 +229,14 @@ namespace Model {
         */
         evWorth(): Array<Object> {
             let evs: any = [];
-            this._stats.forEach((stat: Interface.IStat) => {
+            for (let i = 0; i < this._stats.length; i++) {
+                let stat = this._stats[i];
                 if (stat.effortValue() > 0) {
                     let ev: any = {};
                     ev[stat.name()] = stat.effortValue();
                     evs.push(ev);
                 }
-            });
+            }
 
             return evs;
         }
