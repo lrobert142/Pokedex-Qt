@@ -52,9 +52,9 @@ namespace Model {
          * Array of stats
          *  
          * @private
-         * @type {Array<Object>}
+         * @type {Array<Interface.IStat>}
         */
-        private _stats: Array<Object>;
+        private _stats: Array<Interface.IStat>;
 
         /**
          * Array of possible egg groups
@@ -95,9 +95,14 @@ namespace Model {
         constructor(data: Object) {
             if (this._schema.validate(data)) {
                 let names: Array<Interface.ILocaleName> = [];
+                let stats: Array<Interface.IStat> = [];
 
                 data.names.forEach((nameData: Object) => {
                     names.push(new LocaleName(nameData));
+                });
+
+                data.stats.forEach((statData: Object) => {
+                    stats.push(new Stat(statData));
                 });
 
                 this._nationalDexNumber = data.nationalDexNumber;
@@ -105,7 +110,7 @@ namespace Model {
                 this._sprites = new SpriteSet(data.sprites);
                 this._height = data.height;
                 this._weight = data.weight;
-                this._stats = data.stats;
+                this._stats = stats;
                 this._eggGroups = data.eggGroups;
             }
         }
@@ -193,9 +198,9 @@ namespace Model {
         /**
          * Gets all stats of the pokemon
          * 
-         * @returns {Array<Object>} All available stats
+         * @returns {Array<Interface.IStat>} All available stats
         */
-        stats(): Array<Object> {
+        stats(): Array<Interface.IStat> {
             return this._stats;
         }
 
@@ -203,15 +208,15 @@ namespace Model {
          * Gets the stat with the specified name
          * 
          * @param {string} statName The name of the stat to retrieve
-         * @returns {number} Value of the found stat
+         * @returns {Interface.IStat} Value of the found stat
          * @throws {StatNotFoundException} If a stat cannot be found with that name
         */
-        stat(statName: string): number {
-            for (let i = 0; i < this._stats.length; i++) {
-                if (_.get(this._stats[i], 'stat.name') === statName) {
-                    return this._stats[i].base_stat
+        stat(statName: string): Interface.IStat {
+            this._stats.forEach((stat: Interface.IStat) => {
+                if (stat.name() === statName) {
+                    return stat;
                 }
-            }
+            });
 
             throw new Exception.StatNotFoundException(`Stat with name ${statName} not found.`);
         }
@@ -222,14 +227,14 @@ namespace Model {
          * @returns {Array<Object>} All found effort values
         */
         evWorth(): Array<Object> {
-            let evs = [];
-            for (let i = 0; i < this._stats.length; i++) {
-                if (_.get(this._stats[i], 'effort') > 0) {
-                    let ev = {};
-                    ev[this._stats[i].stat.name] = this._stats[i].effort;
+            let evs: any = [];
+            this._stats.forEach((stat: Interface.IStat) => {
+                if (stat.effortValue() > 0) {
+                    let ev: any = {};
+                    ev[stat.name()] = stat.effortValue();
                     evs.push(ev);
                 }
-            }
+            });
 
             return evs;
         }
@@ -240,7 +245,7 @@ namespace Model {
          * @returns {Array<String>} All egg groups this pokemon belongs to
         */
         eggGroups(): Array<String> {
-            let eggGroups = [];
+            let eggGroups: any = [];
             for (let i = 0; i < this._eggGroups.length; i++) {
                 eggGroups.push(this._eggGroups[i].name);
             }
