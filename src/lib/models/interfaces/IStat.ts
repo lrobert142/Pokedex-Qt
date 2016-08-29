@@ -27,6 +27,8 @@ namespace Interface {
          * @returns {number}
         */
         baseValue(): number;
+
+        //TODO toJSON, equals
     }
 
     export class FakeStat implements IStat {
