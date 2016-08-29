@@ -19,4 +19,26 @@ describe("Stat", () => {
             expect(stat.baseValue()).to.equal(-1);
         });
     });
+
+    describe("#name", () => {
+        it("Should return the name of the stat", () => {
+            let stat = new Stat({ name: "FakeStat", effortValue: -1, baseValue: -1 });
+            expect(stat.name()).to.equal("FakeStat");
+        });
+    });
+
+    describe("#effortValue", () => {
+        it("Should return the effort values associated with the stat", () => {
+            let stat = new Stat({ name: "FakeStat", effortValue: -1, baseValue: -1 });
+            expect(stat.effortValue()).to.equal(-1);
+        });
+    });
+
+    describe("#baseValue", () => {
+        it("Should return the base value of the stat", () => {
+            let stat = new Stat({ name: "FakeStat", effortValue: -1, baseValue: -1 });
+            expect(stat.baseValue()).to.equal(-1);
+        });
+    });
+
 });
