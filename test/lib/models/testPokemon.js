@@ -119,5 +119,10 @@ describe("Pokemon", () => {
         expect(sprites.frontShiny()).to.equal("http://www.fake.com/frontShiny");
         expect(sprites.frontShinyFemale()).to.equal("http://www.fake.com/frontShinyFemale");
     });
+    
+    describe("#height", () => {
+        let pokemon = new Pokemon(validPokemonData);
+        expect(pokemon.height()).to.equal(1);
+    });
 
 });
