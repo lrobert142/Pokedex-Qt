@@ -92,7 +92,7 @@ namespace Model {
          * @returns {Object} Seralized object
         */
         toJSON(): Object {
-            throw new Error("Not Yet Implemened");
+            return { name: this._name, effortValue: this._effortValue, baseValue: this._baseValue };
         }
 
         /**
@@ -102,7 +102,9 @@ namespace Model {
          * @returns {boolean} True if object's propeties are identical, false otherwise
         */
         equals(comparator: Interface.IStat): boolean {
-            throw new Error("Not Yet Implemened");
+            return this._name === comparator.name()
+                && this._effortValue === comparator.effortValue()
+                && this._baseValue === comparator.baseValue();
         }
     }
 }
