@@ -1,12 +1,12 @@
 namespace Interface {
 
     /**
-     * Interface representing minimum required functionality for pokemon sprites
+     * Interface representing minimum required functionality for a set of sprites
      * 
      * @export
      * @class IPokemonSprites
     */
-    export interface IPokemonSprites {
+    export interface ISpriteSet {
         /**
          * Gets the back view of the default sprite
          * 
@@ -79,7 +79,7 @@ namespace Interface {
         equals(comparator: IPokemonSprites): boolean;
     }
 
-    export class FakePokemonSprites implements IPokemonSprites {
+    export class FakeSpriteSet implements ISpriteSet {
         constructor() { }
 
         backDefault(): string {

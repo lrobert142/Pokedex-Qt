@@ -1,6 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
-const FakePokemonSprites = require("../../../../build/lib.js").Interface.FakePokemonSprites;
+const FakePokemonSprites = require("../../../../build/lib.js").Interface.FakeSpriteSet;
 
 describe("FakePokemonSprites", () => {
     describe("#backDefault", () => {

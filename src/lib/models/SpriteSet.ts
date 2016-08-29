@@ -7,7 +7,7 @@ namespace Model {
      * @class PokemonSprite
      * @implements {Interface.IPokemonSprites}
     */
-    export class PokemonSprite implements Interface.IPokemonSprites {
+    export class SpriteSet implements Interface.ISpriteSet {
         /**
          * Default back sprite
          * 
