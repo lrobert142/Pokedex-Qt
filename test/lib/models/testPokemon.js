@@ -22,7 +22,38 @@ describe("Pokemon", () => {
         },
         height: 1,
         weight: 2,
-        stats: [],
+        stats: [
+            {
+                "name": "speed",
+                "effortValue": 0,
+                "baseValue": 5
+            },
+            {
+                "name": "special-defense",
+                "effortValue": 1,
+                "baseValue": 6
+            },
+            {
+                "name": "special-attack",
+                "effortValue": 2,
+                "baseValue": 7
+            },
+            {
+                "name": "defense",
+                "effortValue": 3,
+                "baseValue": 8
+            },
+            {
+                "name": "attack",
+                "effortValue": 4,
+                "baseValue": 9
+            },
+            {
+                "name": "hp",
+                "effortValue": 5,
+                "baseValue": 10
+            }
+        ],
         eggGroups: []
     };
 
@@ -51,21 +82,12 @@ describe("Pokemon", () => {
             let pokemon = new Pokemon(validPokemonData);
 
             expect(pokemon.nationalDexNumber()).to.equal("001");
-            expect(pokemon.names()[0].toJSON()).to.deep.equal({ name: "UnitTest", languageCode: "en" });
+            expect(pokemon.names().length).to.deep.equal(1);
+            expect(pokemon.sprites()).to.not.equal(undefined);
             expect(pokemon.height()).to.equal(1);
             expect(pokemon.weight()).to.equal(2);
-            expect(pokemon.stats()).to.deep.equal([]);
+            expect(pokemon.stats().length).to.equal(6);
             expect(pokemon.eggGroups()).to.deep.equal([]);
-
-            let sprites = pokemon.sprites();
-            expect(sprites.backDefault()).to.equal("http://www.fake.com/backDefault");
-            expect(sprites.backFemale()).to.equal("http://www.fake.com/backFemale");
-            expect(sprites.backShiny()).to.equal("http://www.fake.com/backShiny");
-            expect(sprites.backShinyFemale()).to.equal("http://www.fake.com/backShinyFemale");
-            expect(sprites.frontDefault()).to.equal("http://www.fake.com/frontDefault");
-            expect(sprites.frontFemale()).to.equal("http://www.fake.com/frontFemale");
-            expect(sprites.frontShiny()).to.equal("http://www.fake.com/frontShiny");
-            expect(sprites.frontShinyFemale()).to.equal("http://www.fake.com/frontShinyFemale");
         });
     });
 
@@ -147,6 +169,44 @@ describe("Pokemon", () => {
         it("Should return the weight in kilograms", () => {
             let pokemon = new Pokemon(validPokemonData);
             expect(pokemon.weightInKg()).to.equal(0.2);
+        });
+    });
+
+    describe("#stats", () => {
+        it("Should return an array of stat objects", () => {
+            let pokemon = new Pokemon(validPokemonData);
+            let stats = pokemon.stats();
+            expect(stats.length).to.equal(6);
+            expect(stats[0].toJSON()).to.deep.equal({
+                "name": "speed",
+                "effortValue": 0,
+                "baseValue": 5
+            });
+            expect(stats[1].toJSON()).to.deep.equal({
+                "name": "special-defense",
+                "effortValue": 1,
+                "baseValue": 6
+            });
+            expect(stats[2].toJSON()).to.deep.equal({
+                "name": "special-attack",
+                "effortValue": 2,
+                "baseValue": 7
+            });
+            expect(stats[3].toJSON()).to.deep.equal({
+                "name": "defense",
+                "effortValue": 3,
+                "baseValue": 8
+            });
+            expect(stats[4].toJSON()).to.deep.equal({
+                "name": "attack",
+                "effortValue": 4,
+                "baseValue": 9
+            });
+            expect(stats[5].toJSON()).to.deep.equal({
+                "name": "hp",
+                "effortValue": 5,
+                "baseValue": 10
+            });
         });
     });
 
