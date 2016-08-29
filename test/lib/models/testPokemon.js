@@ -210,4 +210,21 @@ describe("Pokemon", () => {
         });
     });
 
+    describe("#stat", () => {
+        it("Should throw an error if a stat with the specified name cannot be found", () => {
+            let pokemon = new Pokemon(validPokemonData);
+            expect(() => {
+                let stat = pokemon.stat("invalid-name");
+            }).to.throw(StatNotFoundException, 'Stat with name "invalid-name" not found.')
+        });
+
+        it("Should return the stat object with the given name", () => {
+            let pokemon = new Pokemon(validPokemonData);
+            let stat = pokemon.stat("attack");
+            expect(stat.name()).to.equal("attack");
+            expect(stat.effortValue()).to.equal(4);
+            expect(stat.baseValue()).to.equal(9);
+        });
+    });
+
 });
