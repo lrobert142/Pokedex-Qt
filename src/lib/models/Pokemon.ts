@@ -60,9 +60,9 @@ namespace Model {
          * Array of possible egg groups
          * 
          * @private
-         * @type {Array<Object>}
+         * @type {Array<string>}
         */
-        private _eggGroups: Array<Object>;
+        private _eggGroups: Array<string>;
 
         /**
          * Schema validator for this model
@@ -247,12 +247,7 @@ namespace Model {
          * @returns {Array<String>} All egg groups this pokemon belongs to
         */
         eggGroups(): Array<String> {
-            let eggGroups: any = [];
-            for (let i = 0; i < this._eggGroups.length; i++) {
-                eggGroups.push(this._eggGroups[i].name);
-            }
-
-            return eggGroups;
+            return this._eggGroups;
         }
 
         /**
