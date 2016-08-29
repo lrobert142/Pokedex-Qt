@@ -85,9 +85,12 @@ describe("FakePokemon", () => {
     });
 
     describe("#stats", () => {
-        it("should return a static value", () => {
+        it("should return a static array with static data", () => {
             let fake = new FakePokemon();
-            expect(fake.stats()).to.deep.equal([{ name: "attack", value: -1 }, { name: "hp", value: -1 }]);
+            let stat = fake.stats()[0];
+            expect(stat.name()).to.equal("FakeStat");
+            expect(stat.effortValue()).to.equal(-1);
+            expect(stat.baseValue()).to.equal(-1);
         })
     });
 
@@ -101,7 +104,10 @@ describe("FakePokemon", () => {
 
         it("Should return a static value", () => {
             let fake = new FakePokemon();
-            expect(fake.stat("attack")).to.equal(-1);
+            let stat = fake.stat("attack");
+            expect(stat.name()).to.equal("FakeStat");
+            expect(stat.effortValue()).to.equal(-1);
+            expect(stat.baseValue()).to.equal(-1);
         });
     });
 

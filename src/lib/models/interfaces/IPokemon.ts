@@ -68,18 +68,18 @@ namespace Interface {
         /**
          * Gets all stats of the pokemon
          * 
-         * @returns {Array<Object>} All available stats
+         * @returns {Array<IStat>} All available stats
         */
-        stats(): Array<Object>;
+        stats(): Array<IStat>;
 
         /**
          * Gets the stat with the specified name
          * 
          * @param {string} statName The name of the stat to retrieve
-         * @returns {number} Value of the found stat
+         * @returns {IStat} Found stat object
          * @throws {StatNotFoundException} If a stat cannot be found with that name
         */
-        stat(statName: string): number;
+        stat(statName: string): IStat;
 
         /**
          * Gets the effort values earned by defeating this type of pokemon
@@ -150,13 +150,13 @@ namespace Interface {
             return -1;
         }
 
-        stats(): Array<Object> {
-            return [{ name: "attack", value: -1 }, { name: "hp", value: -1 }];
+        stats(): Array<IStat> {
+            return [new FakeStat()];
         }
 
-        stat(statName: string): number {
+        stat(statName: string): IStat {
             if (statName === "attack") {
-                return -1;
+                return new FakeStat();
             } else {
                 throw new Exception.StatNotFoundException(`Stat with name "${statName}" not found.`);
             }
