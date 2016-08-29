@@ -130,8 +130,12 @@ describe("FakePokemon", () => {
             let fake = new FakePokemon();
             expect(fake.toJSON()).to.deep.equal({
                 nationalDexNumber: "001", names: [{ name: "Fake", languageCode: "en" }, { name: "Pokemon", languageCode: "en" }],
-                sprites: [{ type: "front", url: "http://www.FakePokemon.com/front" }, { type: "back", url: "http://www.FakePokemon.com/back" }],
-                height: -1, weight: -1, stats: [{ name: "attack", value: -1 }, { name: "hp", value: -1 }],
+                sprites: {
+                    backDefault: "http://www.fake.com/backDefault", backFemale: "http://www.fake.com/backFemale",
+                    backShiny: "http://www.fake.com/backShiny", backShinyFemale: "http://www.fake.com/backShinyFemale",
+                    frontDefault: "http://www.fake.com/frontDefault", frontFemale: "http://www.fake.com/frontFemale",
+                    frontShiny: "http://www.fake.com/frontShiny", frontShinyFemale: "http://www.fake.com/frontShinyFemale"
+                }, height: -1, weight: -1, stats: [{ name: "FakeStat", effortValue: -1, baseValue: -1 }],
                 eggGroups: ["FakeEggGroup1", "FakeEggGroup2"]
             });
         });

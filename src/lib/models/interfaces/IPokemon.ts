@@ -173,8 +173,7 @@ namespace Interface {
         toJSON(): Object {
             return {
                 nationalDexNumber: "001", names: [{ name: "Fake", languageCode: "en" }, { name: "Pokemon", languageCode: "en" }],
-                sprites: [{ type: "front", url: "http://www.FakePokemon.com/front" }, { type: "back", url: "http://www.FakePokemon.com/back" }],
-                height: -1, weight: -1, stats: [{ name: "attack", value: -1 }, { name: "hp", value: -1 }],
+                sprites: new FakeSpriteSet().toJSON(), height: -1, weight: -1, stats: [new FakeStat().toJSON()],
                 eggGroups: ["FakeEggGroup1", "FakeEggGroup2"]
             };
         }
