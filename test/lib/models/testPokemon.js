@@ -227,4 +227,28 @@ describe("Pokemon", () => {
         });
     });
 
+    describe("#evWorth", () => {
+        it("Should return an array of Objects with effort values and names", () => {
+            let pokemon = new Pokemon(validPokemonData);
+            let evs = pokemon.evWorth();
+
+            expect(evs.length).to.equal(5);
+            expect(evs[0]).to.deep.equal({
+                "special-defense": 1
+            });
+            expect(evs[1]).to.deep.equal({
+                "special-attack": 2
+            });
+            expect(evs[2]).to.deep.equal({
+                "defense": 3
+            });
+            expect(evs[3]).to.deep.equal({
+                "attack": 4
+            });
+            expect(evs[4]).to.deep.equal({
+                "hp": 5
+            });
+        });
+    });
+
 });
