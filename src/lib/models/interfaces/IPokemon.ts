@@ -38,13 +38,6 @@ namespace Interface {
         sprites(): ISpriteSet;
 
         /**
-         * Gets the default front sprite for the pokemon
-         * 
-         * @returns {string} The URL of the frontal sprite
-        */
-        defaultFrontSpriteUrl(): string;
-
-        /**
          * Gets the raw height of the pokemon
          * 
          * @returns {number}
@@ -139,10 +132,6 @@ namespace Interface {
 
         sprites(): ISpriteSet {
             return new FakeSpriteSet();
-        }
-
-        defaultFrontSpriteUrl(): string {
-            return "http://www.FakePokemon.com/front_default";
         }
 
         height(): number {

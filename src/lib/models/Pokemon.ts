@@ -155,15 +155,6 @@ namespace Model {
         }
 
         /**
-         * Gets the default front sprite for the pokemon
-         * 
-         * @returns {string} The URL of the frontal sprite
-        */
-        defaultFrontSpriteUrl(): string {
-            return this._sprites.front_default;
-        }
-
-        /**
          * Gets the raw height of the pokemon
          * 
          * @returns {number}

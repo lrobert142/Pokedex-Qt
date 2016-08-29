@@ -56,13 +56,6 @@ describe("FakePokemon", () => {
         });
     });
 
-    describe("#defaultFrontSpriteUrl", () => {
-        it("Should return a static value", () => {
-            let fake = new FakePokemon();
-            expect(fake.defaultFrontSpriteUrl()).to.equal("http://www.FakePokemon.com/front_default");
-        });
-    });
-
     describe("#height", () => {
         it("Should return a static value", () => {
             let fake = new FakePokemon();
