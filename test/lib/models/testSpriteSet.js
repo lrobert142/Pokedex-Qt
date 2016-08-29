@@ -13,47 +13,47 @@ describe("SpriteSet", () => {
 
         it("Should create a new SpriteSet instance", () => {
             let spriteSet = new SpriteSet({
-                backDefault: "backDefault",
-                backFemale: "backFemale",
-                backShiny: "backShiny",
-                backShinyFemale: "backShinyFemale",
-                frontDefault: "frontDefault",
-                frontFemale: "frontFemale",
-                frontShiny: "frontShiny",
-                frontShinyFemale: "frontShinyFemale"
+                backDefault: "http://www.fake.com/backDefault",
+                backFemale: "http://www.fake.com/backFemale",
+                backShiny: "http://www.fake.com/backShiny",
+                backShinyFemale: "http://www.fake.com/backShinyFemale",
+                frontDefault: "http://www.fake.com/frontDefault",
+                frontFemale: "http://www.fake.com/frontFemale",
+                frontShiny: "http://www.fake.com/frontShiny",
+                frontShinyFemale: "http://www.fake.com/frontShinyFemale"
             });
-            expect(spriteSet.backDefault()).to.equal("backDefault");
-            expect(spriteSet.backFemale()).to.equal("backFemale");
-            expect(spriteSet.backShiny()).to.equal("backShiny");
-            expect(spriteSet.backShinyFemale()).to.equal("backShinyFemale");
-            expect(spriteSet.frontDefault()).to.equal("frontDefault");
-            expect(spriteSet.frontFemale()).to.equal("frontFemale");
-            expect(spriteSet.frontShiny()).to.equal("frontShiny");
-            expect(spriteSet.frontShinyFemale()).to.equal("frontShinyFemale");
+            expect(spriteSet.backDefault()).to.equal("http://www.fake.com/backDefault");
+            expect(spriteSet.backFemale()).to.equal("http://www.fake.com/backFemale");
+            expect(spriteSet.backShiny()).to.equal("http://www.fake.com/backShiny");
+            expect(spriteSet.backShinyFemale()).to.equal("http://www.fake.com/backShinyFemale");
+            expect(spriteSet.frontDefault()).to.equal("http://www.fake.com/frontDefault");
+            expect(spriteSet.frontFemale()).to.equal("http://www.fake.com/frontFemale");
+            expect(spriteSet.frontShiny()).to.equal("http://www.fake.com/frontShiny");
+            expect(spriteSet.frontShinyFemale()).to.equal("http://www.fake.com/frontShinyFemale");
         });
     });
 
     describe("#toJSON", () => {
         it("should export the model as a plain JSON Object", () => {
             let spriteSet = new SpriteSet({
-                backDefault: "backDefault",
-                backFemale: "backFemale",
-                backShiny: "backShiny",
-                backShinyFemale: "backShinyFemale",
-                frontDefault: "frontDefault",
-                frontFemale: "frontFemale",
-                frontShiny: "frontShiny",
-                frontShinyFemale: "frontShinyFemale"
+                backDefault: "http://www.fake.com/backDefault",
+                backFemale: "http://www.fake.com/backFemale",
+                backShiny: "http://www.fake.com/backShiny",
+                backShinyFemale: "http://www.fake.com/backShinyFemale",
+                frontDefault: "http://www.fake.com/frontDefault",
+                frontFemale: "http://www.fake.com/frontFemale",
+                frontShiny: "http://www.fake.com/frontShiny",
+                frontShinyFemale: "http://www.fake.com/frontShinyFemale"
             });
             expect(spriteSet.toJSON()).to.deep.equal({
-                backDefault: "backDefault",
-                backFemale: "backFemale",
-                backShiny: "backShiny",
-                backShinyFemale: "backShinyFemale",
-                frontDefault: "frontDefault",
-                frontFemale: "frontFemale",
-                frontShiny: "frontShiny",
-                frontShinyFemale: "frontShinyFemale"
+                backDefault: "http://www.fake.com/backDefault",
+                backFemale: "http://www.fake.com/backFemale",
+                backShiny: "http://www.fake.com/backShiny",
+                backShinyFemale: "http://www.fake.com/backShinyFemale",
+                frontDefault: "http://www.fake.com/frontDefault",
+                frontFemale: "http://www.fake.com/frontFemale",
+                frontShiny: "http://www.fake.com/frontShiny",
+                frontShinyFemale: "http://www.fake.com/frontShinyFemale"
             });
         });
     });
@@ -61,14 +61,14 @@ describe("SpriteSet", () => {
     describe("#equals", () => {
         it("Should return false if properties are not identical", () => {
             let spriteSet1 = new SpriteSet({
-                backDefault: "backDefault",
-                backFemale: "backFemale",
-                backShiny: "backShiny",
-                backShinyFemale: "backShinyFemale",
-                frontDefault: "frontDefault",
-                frontFemale: "frontFemale",
-                frontShiny: "frontShiny",
-                frontShinyFemale: "frontShinyFemale"
+                backDefault: "http://www.fake.com/backDefault",
+                backFemale: "http://www.fake.com/backFemale",
+                backShiny: "http://www.fake.com/backShiny",
+                backShinyFemale: "http://www.fake.com/backShinyFemale",
+                frontDefault: "http://www.fake.com/frontDefault",
+                frontFemale: "http://www.fake.com/frontFemale",
+                frontShiny: "http://www.fake.com/frontShiny",
+                frontShinyFemale: "http://www.fake.com/frontShinyFemale"
             });
             let spriteSet2 = new SpriteSet({
                 backDefault: "",
@@ -85,14 +85,14 @@ describe("SpriteSet", () => {
 
         it("Should return true if properties are identical", () => {
             const spriteSetData = {
-                backDefault: "backDefault",
-                backFemale: "backFemale",
-                backShiny: "backShiny",
-                backShinyFemale: "backShinyFemale",
-                frontDefault: "frontDefault",
-                frontFemale: "frontFemale",
-                frontShiny: "frontShiny",
-                frontShinyFemale: "frontShinyFemale"
+                backDefault: "http://www.fake.com/backDefault",
+                backFemale: "http://www.fake.com/backFemale",
+                backShiny: "http://www.fake.com/backShiny",
+                backShinyFemale: "http://www.fake.com/backShinyFemale",
+                frontDefault: "http://www.fake.com/frontDefault",
+                frontFemale: "http://www.fake.com/frontFemale",
+                frontShiny: "http://www.fake.com/frontShiny",
+                frontShinyFemale: "http://www.fake.com/frontShinyFemale"
             };
             let spriteSet1 = new SpriteSet(spriteSetData);
             let spriteSet2 = new SpriteSet(spriteSetData);

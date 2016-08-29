@@ -33,9 +33,9 @@ namespace Interface {
         /**
          * Gets all sprites for the pokemon
          * 
-         * @returns {Array<Object>} All available sprites
+         * @returns {ISpriteSet} All available sprites
         */
-        sprites(): Array<Object>;
+        sprites(): ISpriteSet;
 
         /**
          * Gets the default front sprite for the pokemon
@@ -137,8 +137,8 @@ namespace Interface {
             }
         }
 
-        sprites(): Array<Object> {
-            return [{ type: "front", url: "http://www.FakePokemon.com/front" }, { type: "back", url: "http://www.FakePokemon.com/back" }];
+        sprites(): ISpriteSet {
+            return new FakeSpriteSet();
         }
 
         defaultFrontSpriteUrl(): string {

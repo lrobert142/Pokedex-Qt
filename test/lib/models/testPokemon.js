@@ -11,14 +11,14 @@ describe("Pokemon", () => {
         nationalDexNumber: "001",
         names: [{ name: "UnitTest", languageCode: "en" }],
         sprites: {
-            backDefault: "backDefault",
-            backFemale: "backFemale",
-            backShiny: "backShiny",
-            backShinyFemale: "backShinyFemale",
-            frontDefault: "frontDefault",
-            frontFemale: "frontFemale",
-            frontShiny: "frontShiny",
-            frontShinyFemale: "frontShinyFemale"
+            backDefault: "http://www.fake.com/backDefault",
+            backFemale: "http://www.fake.com/backFemale",
+            backShiny: "http://www.fake.com/backShiny",
+            backShinyFemale: "http://www.fake.com/backShinyFemale",
+            frontDefault: "http://www.fake.com/frontDefault",
+            frontFemale: "http://www.fake.com/frontFemale",
+            frontShiny: "http://www.fake.com/frontShiny",
+            frontShinyFemale: "http://www.fake.com/frontShinyFemale"
         },
         height: 1,
         weight: 1,
@@ -52,11 +52,20 @@ describe("Pokemon", () => {
 
             expect(pokemon.nationalDexNumber()).to.equal("001");
             expect(pokemon.names()[0].toJSON()).to.deep.equal({ name: "UnitTest", languageCode: "en" });
-            expect(pokemon.sprites()).to.deep.equal([]);
             expect(pokemon.height()).to.equal(1);
             expect(pokemon.weight()).to.equal(1);
             expect(pokemon.stats()).to.deep.equal([]);
             expect(pokemon.eggGroups()).to.deep.equal([]);
+
+            let sprites = pokemon.sprites();
+            expect(sprites.backDefault()).to.equal("http://www.fake.com/backDefault");
+            expect(sprites.backFemale()).to.equal("http://www.fake.com/backFemale");
+            expect(sprites.backShiny()).to.equal("http://www.fake.com/backShiny");
+            expect(sprites.backShinyFemale()).to.equal("http://www.fake.com/backShinyFemale");
+            expect(sprites.frontDefault()).to.equal("http://www.fake.com/frontDefault");
+            expect(sprites.frontFemale()).to.equal("http://www.fake.com/frontFemale");
+            expect(sprites.frontShiny()).to.equal("http://www.fake.com/frontShiny");
+            expect(sprites.frontShinyFemale()).to.equal("http://www.fake.com/frontShinyFemale");
         });
     });
 

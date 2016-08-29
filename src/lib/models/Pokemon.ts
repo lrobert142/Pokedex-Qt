@@ -148,9 +148,9 @@ namespace Model {
         /**
          * Gets all sprites for the pokemon
          * 
-         * @returns {Array<string>} All available sprites
+         * @returns {Interface.ISpriteSet} All available sprites
         */
-        sprites(): Array<string> {
+        sprites(): Interface.ISpriteSet {
             return this._sprites;
         }
 

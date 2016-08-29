@@ -42,12 +42,17 @@ describe("FakePokemon", () => {
     });
 
     describe("#sprites", () => {
-        it("Should return a static value", () => {
-            let fake = new FakePokemon;
-            expect(fake.sprites()).to.deep.equal([
-                { type: "front", url: "http://www.FakePokemon.com/front" },
-                { type: "back", url: "http://www.FakePokemon.com/back" }
-            ]);
+        it("Should return a static object", () => {
+            let fake = new FakePokemon();
+            let sprites = fake.sprites();
+            expect(sprites.backDefault()).to.equal("http://www.fake.com/backDefault");
+            expect(sprites.backFemale()).to.equal("http://www.fake.com/backFemale");
+            expect(sprites.backShiny()).to.equal("http://www.fake.com/backShiny");
+            expect(sprites.backShinyFemale()).to.equal("http://www.fake.com/backShinyFemale");
+            expect(sprites.frontDefault()).to.equal("http://www.fake.com/frontDefault");
+            expect(sprites.frontFemale()).to.equal("http://www.fake.com/frontFemale");
+            expect(sprites.frontShiny()).to.equal("http://www.fake.com/frontShiny");
+            expect(sprites.frontShinyFemale()).to.equal("http://www.fake.com/frontShinyFemale");
         });
     });
 
