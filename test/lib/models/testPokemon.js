@@ -125,4 +125,9 @@ describe("Pokemon", () => {
         expect(pokemon.height()).to.equal(1);
     });
 
+    describe("#heightInMeters", () => {
+        let pokemon = new Pokemon(validPokemonData);
+        expect(pokemon.heightInMeters()).to.equal(0.1);
+    });
+
 });
