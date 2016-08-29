@@ -39,4 +39,27 @@ describe("LocaleName", () => {
         });
     });
 
+    describe("#toJSON", () => {
+        it("should export the model as a plain JSON Object", () => {
+            let name = new LocaleName({ name: "Unit Test", languageCode: "en" });
+            expect(name.toJSON()).to.deep.equal({ name: "Unit Test", languageCode: "en" });
+        });
+    });
+
+    describe("#equals", () => {
+        it("Should return false if properties are not identical", () => {
+            let name1 = new LocaleName({ name: "Unit Test", languageCode: "en" });
+            let name2 = new LocaleName({ name: "Bad Name", languageCode: "ja" });
+            expect(name1.equals(name2)).to.be.false;
+        });
+
+        it("Should return true if properties are identical", () => {
+            const nameData = { name: "Unit Test", languageCode: "en" };
+            let name1 = new LocaleName(nameData);
+            let name2 = new LocaleName(nameData);
+            expect(name1.equals(name2)).to.be.true;
+        });
+    });
+
+
 });
