@@ -28,7 +28,20 @@ namespace Interface {
         */
         baseValue(): number;
 
-        //TODO toJSON, equals
+        /**
+         * Seralizes to a plain JSON representation
+         * 
+         * @returns {Object} Seralized object
+        */
+        toJSON(): Object;
+
+        /**
+         * Checks whether this instance is equal to another
+         * 
+         * @param {IStat} comparator The instance to compare with
+         * @returns {boolean} True if object's propeties are identical, false otherwise
+        */
+        equals(comparator: IStat): boolean;
     }
 
     export class FakeStat implements IStat {
@@ -44,6 +57,14 @@ namespace Interface {
 
         baseValue(): number {
             return -1;
+        }
+
+        toJSON(): Object {
+            return { name: "FakeStat", effortValue: -1, baseValue: -1 };
+        }
+
+        equals(comparator: IStat): boolean {
+            return true;
         }
     }
 }

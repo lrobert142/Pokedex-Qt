@@ -85,6 +85,24 @@ namespace Model {
         baseValue(): number {
             return this._baseValue;
         }
-    }
 
+        /**
+         * Seralizes to a plain JSON representation
+         * 
+         * @returns {Object} Seralized object
+        */
+        toJSON(): Object {
+            throw new Error("Not Yet Implemened");
+        }
+
+        /**
+         * Checks whether this instance is equal to another
+         * 
+         * @param {Interface.IStat} comparator The instance to compare with
+         * @returns {boolean} True if object's propeties are identical, false otherwise
+        */
+        equals(comparator: Interface.IStat): boolean {
+            throw new Error("Not Yet Implemened");
+        }
+    }
 }

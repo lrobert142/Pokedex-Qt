@@ -24,4 +24,18 @@ describe("FakeStat", () => {
             expect(fake.baseValue()).to.equal(-1);
         });
     });
+
+    describe("#toJSON", () => {
+        it("Should return a static object", () => {
+            let fake = new FakeStat();
+            expect(fake.toJSON()).to.deep.equal({ name: "FakeStat", effortValue: -1, baseValue: -1 });
+        });
+    });
+
+    describe("#equals", () => {
+        it("Should return true", () => {
+            let fake = new FakeStat();
+            expect(fake.equals(fake)).to.be.true;
+        });
+    });
 });
