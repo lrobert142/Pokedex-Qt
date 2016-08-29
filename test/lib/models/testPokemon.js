@@ -108,26 +108,32 @@ describe("Pokemon", () => {
     });
 
     describe("#sprites", () => {
-        let pokemon = new Pokemon(validPokemonData);
-        let sprites = pokemon.sprites();
-        expect(sprites.backDefault()).to.equal("http://www.fake.com/backDefault");
-        expect(sprites.backFemale()).to.equal("http://www.fake.com/backFemale");
-        expect(sprites.backShiny()).to.equal("http://www.fake.com/backShiny");
-        expect(sprites.backShinyFemale()).to.equal("http://www.fake.com/backShinyFemale");
-        expect(sprites.frontDefault()).to.equal("http://www.fake.com/frontDefault");
-        expect(sprites.frontFemale()).to.equal("http://www.fake.com/frontFemale");
-        expect(sprites.frontShiny()).to.equal("http://www.fake.com/frontShiny");
-        expect(sprites.frontShinyFemale()).to.equal("http://www.fake.com/frontShinyFemale");
+        it("Should return a valid SpiteSet object", () => {
+            let pokemon = new Pokemon(validPokemonData);
+            let sprites = pokemon.sprites();
+            expect(sprites.backDefault()).to.equal("http://www.fake.com/backDefault");
+            expect(sprites.backFemale()).to.equal("http://www.fake.com/backFemale");
+            expect(sprites.backShiny()).to.equal("http://www.fake.com/backShiny");
+            expect(sprites.backShinyFemale()).to.equal("http://www.fake.com/backShinyFemale");
+            expect(sprites.frontDefault()).to.equal("http://www.fake.com/frontDefault");
+            expect(sprites.frontFemale()).to.equal("http://www.fake.com/frontFemale");
+            expect(sprites.frontShiny()).to.equal("http://www.fake.com/frontShiny");
+            expect(sprites.frontShinyFemale()).to.equal("http://www.fake.com/frontShinyFemale");
+        });
     });
-    
+
     describe("#height", () => {
-        let pokemon = new Pokemon(validPokemonData);
-        expect(pokemon.height()).to.equal(1);
+        it("Should return the raw height value", () => {
+            let pokemon = new Pokemon(validPokemonData);
+            expect(pokemon.height()).to.equal(1);
+        });
     });
 
     describe("#heightInMeters", () => {
-        let pokemon = new Pokemon(validPokemonData);
-        expect(pokemon.heightInMeters()).to.equal(0.1);
+        it("SHould return the height in meters", () => {
+            let pokemon = new Pokemon(validPokemonData);
+            expect(pokemon.heightInMeters()).to.equal(0.1);
+        });
     });
 
 });
