@@ -73,10 +73,10 @@ namespace Interface {
         /**
          * Checks whether this instance is equal to another
          * 
-         * @param {IPokemonSprites} comparator The instance to compare with
+         * @param {ISpriteSet} comparator The instance to compare with
          * @returns {boolean} True if object's propeties are identical, false otherwise
         */
-        equals(comparator: IPokemonSprites): boolean;
+        equals(comparator: ISpriteSet): boolean;
     }
 
     export class FakeSpriteSet implements ISpriteSet {
@@ -123,7 +123,7 @@ namespace Interface {
             };
         }
 
-        equals(comparator: IPokemonSprites): boolean {
+        equals(comparator: ISpriteSet): boolean {
             return true;
         }
     }

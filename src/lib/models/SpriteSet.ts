@@ -204,10 +204,10 @@ namespace Model {
         /**
          * Checks whether this instance is equal to another
          * 
-         * @param {Interface.IPokemonSprites} comparator The instance to compare with
+         * @param {Interface.ISpriteSet} comparator The instance to compare with
          * @returns {boolean} True if object's propeties are identical, false otherwise
         */
-        equals(comparator: Interface.IPokemonSprites): boolean {
+        equals(comparator: Interface.ISpriteSet): boolean {
             return this._backDefault === comparator.backDefault()
                 && this._backFemale === comparator.backFemale()
                 && this._backShiny === comparator.backShiny()
