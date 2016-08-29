@@ -54,7 +54,7 @@ describe("Pokemon", () => {
                 "baseValue": 10
             }
         ],
-        eggGroups: []
+        eggGroups: ["dragon", "water1"]
     };
 
     describe("Constructor", () => {
@@ -87,7 +87,7 @@ describe("Pokemon", () => {
             expect(pokemon.height()).to.equal(1);
             expect(pokemon.weight()).to.equal(2);
             expect(pokemon.stats().length).to.equal(6);
-            expect(pokemon.eggGroups()).to.deep.equal([]);
+            expect(pokemon.eggGroups().length).to.equal(2);
         });
     });
 
@@ -248,6 +248,16 @@ describe("Pokemon", () => {
             expect(evs[4]).to.deep.equal({
                 "hp": 5
             });
+        });
+    });
+
+    describe("#eggGroups", () => {
+        it("Should return an array of strings indicating egg groups", () => {
+            let pokemon = new Pokemon(validPokemonData);
+            let eggGroups = pokemon.eggGroups();
+            expect(eggGroups.length).to.equal(2);
+            expect(eggGroups[0]).to.equal("dragon");
+            expect(eggGroups[1]).to.equal("water1");
         });
     });
 
