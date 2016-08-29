@@ -25,12 +25,12 @@ namespace Model {
         private _names: Array<Interface.ILocaleName>;
 
         /**
-         * Array of sprite URLs
+         * Set of sprites for the pokemon
          * 
          * @private
-         * @type {Array<Object>}
+         * @type {Interface.ISpriteSet}
         */
-        private _sprites: Array<Object>;
+        private _sprites: Interface.ISpriteSet;
 
         /**
          * Raw height value
@@ -86,7 +86,7 @@ namespace Model {
          * @param {Object} data Object containing all data relevant to the Pokemon
          * @param {number} data.nationalDexNumber Pokemon's national pokedex number
          * @param {Array} data.names Names and locales of the pokemon in different languages
-         * @param {Array} data.sprites Various sprites of the pokemon
+         * @param {Object} data.sprites Various sprites of the pokemon
          * @param {number} data.height Raw height of the pokemon
          * @param {number} data.weight Raw weight of the pokemon
          * @param {Array} data.height Stats of the pokemon, including ev worth
@@ -94,15 +94,15 @@ namespace Model {
         */
         constructor(data: Object) {
             if (this._schema.validate(data)) {
-                let names = [];
+                let names: Array<Interface.ILocaleName> = [];
 
-                data.names.forEach((nameData) => {
+                data.names.forEach((nameData: Object) => {
                     names.push(new LocaleName(nameData));
                 });
 
                 this._nationalDexNumber = data.nationalDexNumber;
                 this._names = names;
-                this._sprites = data.sprites;
+                this._sprites = new SpriteSet(data.sprites);
                 this._height = data.height;
                 this._weight = data.weight;
                 this._stats = data.stats;
@@ -148,9 +148,9 @@ namespace Model {
         /**
          * Gets all sprites for the pokemon
          * 
-         * @returns {Array<Object>} All available sprites
+         * @returns {Array<string>} All available sprites
         */
-        sprites(): Array<Object> {
+        sprites(): Array<string> {
             return this._sprites;
         }
 

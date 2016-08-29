@@ -10,12 +10,21 @@ describe("Pokemon", () => {
     const validPokemonData = {
         nationalDexNumber: "001",
         names: [{ name: "UnitTest", languageCode: "en" }],
-        sprites: [],
+        sprites: {
+            backDefault: "backDefault",
+            backFemale: "backFemale",
+            backShiny: "backShiny",
+            backShinyFemale: "backShinyFemale",
+            frontDefault: "frontDefault",
+            frontFemale: "frontFemale",
+            frontShiny: "frontShiny",
+            frontShinyFemale: "frontShinyFemale"
+        },
         height: 1,
         weight: 1,
         stats: [],
         eggGroups: []
-    }
+    };
 
     describe("Constructor", () => {
         it("Should throw an error if any data is missing", () => {
