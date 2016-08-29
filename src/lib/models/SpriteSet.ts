@@ -111,7 +111,7 @@ namespace Model {
                 this._frontDefault = data.frontDefault;
                 this._frontFemale = data.frontFemale;
                 this._frontShiny = data.frontShiny;
-                this._frontShinyFemale = data.frtonShinyFemale;
+                this._frontShinyFemale = data.frontShinyFemale;
             }
         }
 
@@ -194,7 +194,7 @@ namespace Model {
         */
         toJSON(): Object {
             return {
-                backDefault: this._backDefault, backFemale: this._backDefault,
+                backDefault: this._backDefault, backFemale: this._backFemale,
                 backShiny: this._backShiny, backShinyFemale: this._backShinyFemale,
                 frontDefault: this._frontDefault, frontFemale: this._frontFemale,
                 frontShiny: this._frontShiny, frontShinyFemale: this._frontShinyFemale
